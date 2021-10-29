@@ -9,6 +9,7 @@ const App = () => {
   // reduserに渡るobject
   const initialState = {
     events: [],
+    operationLogs: [],
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
