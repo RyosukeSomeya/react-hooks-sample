@@ -5,6 +5,7 @@ import EventForm from './EventForm';
 import reducer from '../reducers';
 
 const App = () => {
+  // stateは配列 dispachは関数
   const [state, dispatch] = useReducer(reducer, []);
 
   return (
