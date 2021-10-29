@@ -1,11 +1,14 @@
 import React, { useReducer, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Event from './Event';
 import reducer from '../reducers';
 
 const App = () => {
   // reducerの初期化
+  // イベントの状態
   const [state, dispatch] = useReducer(reducer, []);
-  // DOM上の状態を管理する
+
+  // DOM上の状態を管理する（stateに送る前処理）
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
@@ -19,8 +22,6 @@ const App = () => {
     setTitle('');
     setBody('');
   };
-
-  console.log(state);
 
   return (
     <div className="container-fluid">
@@ -59,7 +60,11 @@ const App = () => {
             <th></th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {state.map((event, index) => (
+            <Event key={index} event={event} dispatch={dispatch} />
+          ))}
+        </tbody>
       </table>
     </div>
   );
